@@ -1,24 +1,24 @@
-import User from "./models/user.model.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
   try {
-    const hash = bcrypt.hashSync(req.body.password, 5);
+    const hash = bcrypt.hashSync(req.body.password, 12);
     const newUser = new User({
       ...req.body,
       password: hash,
     });
     await newUser.save();
-    res.status(200).send("User has been registered");
+    res.status(201).send("User has been registered");
   } catch (error) {
-    console.log(error);
+    res.status(500).send("something went wrong");
   }
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
   try {
-    const user = User.findOne({ username: req.body.username });
+    const user =await User.findOne({ username: req.body.username });
     if (!user) {
       res.status(400).send("User not found!");
     }
@@ -40,8 +40,9 @@ const login = async (req, res) => {
       })
       .status(200)
       .send(info);
-      
+
   } catch (error) {
     console.log(error);
+    res.status(500).send("something went wrong");
   }
 };
