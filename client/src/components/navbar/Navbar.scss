@@ -8,7 +8,8 @@
     top: 0;
     z-index: 999;
     transition: 0.5s all ease;
-  
+    padding: 0 20px;
+    
     &.active {
       background-color: white;
       color: black;
@@ -32,6 +33,7 @@
         font-weight: bold;
   
         .text {
+          font-weight: bold
         }
   
         .dot {
@@ -44,7 +46,7 @@
         align-items: center;
         gap: 24px;
         font-family: "Montserrat", sans-serif;
-        font-weight: 500;
+        font-weight: 600;
   
         span {
           white-space: nowrap;
@@ -106,8 +108,8 @@
     }
   
     .menu {
-      width: 1400px;
-      padding: 10px 0px;
+      width: 100%;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       color: gray;
