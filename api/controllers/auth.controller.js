@@ -5,7 +5,7 @@ import createError from "../utils/createError.js";
 
 export const register = async (req, res, next) => {
   try {
-    const hash = bcrypt.hashSync(req.body.password, 12);
+    const hash = bcrypt.hashSync(req.body.password, 10);
     const newUser = new User({
       ...req.body,
       password: hash,
